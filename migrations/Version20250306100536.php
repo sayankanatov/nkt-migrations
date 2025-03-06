@@ -22,11 +22,11 @@ final class Version20250306100536 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE lst_attr_values (
             id SERIAL PRIMARY KEY,
-            attr_id INTEGER NOT NULL,
+            attr_id INT NOT NULL,
             value TEXT NOT NULL,
             type VARCHAR(255) NOT NULL,
             status ENUM('draft','published', 'canceled') NOT NULL,
-            good_id INTEGER NOT NULL,
+            good_id INT NOT NULL,
             data_qualifier TEXT,
             source ENUM('ekls', 'gs1', 'nkt') DEFAULT 'nkt',
             is_visible TINYINT(1) NOT NULL DEFAULT 1,

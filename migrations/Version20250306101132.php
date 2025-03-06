@@ -22,7 +22,7 @@ final class Version20250306101132 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE sys_transgran_export_logs (
             id SERIAL PRIMARY KEY,
-            good_id INTEGER NOT NULL,
+            good_id INT NOT NULL,
             barcode VARCHAR(255) NOT NULL,
             status ENUM('error','success') NOT NULL,
             response TEXT,

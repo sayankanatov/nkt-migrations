@@ -22,7 +22,7 @@ final class Version20250306100538 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE lst_photos (
             id SERIAL PRIMARY KEY,
-            good_id INTEGER NOT NULL,
+            good_id INT NOT NULL,
             uri TEXT NOT NULL,
             photo_type VARCHAR(255) NOT NULL,
             status ENUM('published','draft', 'canceled') NOT NULL,

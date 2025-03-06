@@ -22,7 +22,7 @@ final class Version20250306101131 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE sys_edo_pharma_certificates (
             id SERIAL PRIMARY KEY,
-            account_id INTEGER NOT NULL,
+            account_id INT NOT NULL,
             type VARCHAR(255) NOT NULL,
             private_key TEXT NOT NULL,
             public_key TEXT NOT NULL,

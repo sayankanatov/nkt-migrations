@@ -22,8 +22,8 @@ final class Version20250306101128 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE lst_good_categories (
             id SERIAL PRIMARY KEY,
-            good_id INTEGER NOT NULL,
-            cat_id INTEGER NOT NULL,
+            good_id INT NOT NULL,
+            cat_id INT NOT NULL,
             status ENUM('published','draft', 'canceled') NOT NULL,
             is_deleted TINYINT(1) NOT NULL DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -22,10 +22,10 @@ final class Version20250306100031 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE lst_signed_goods (
             id SERIAL PRIMARY KEY,
-            good_id INTEGER NOT NULL,
+            good_id INT UNSIGNED NOT NULL,
             xml_path VARCHAR(255) NOT NULL,
-            account_id INTEGER NOT NULL,
-            user_id INTEGER NOT NULL,
+            account_id INT NOT NULL,
+            user_id INT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;');
