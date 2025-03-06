@@ -21,7 +21,7 @@ final class Version20250306090845 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE lst_goods (
-            id SERIAL PRIMARY KEY,
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             barcode_id INT DEFAULT NULL,
             status ENUM('published', 'draft', 'archived', 'on-moderation', 'in-queue') NOT NULL,
