@@ -10,11 +10,11 @@
 composer require sayankanatov/nkt-migrations
 ```
 
-Добавьте конфигурацию Doctrine Migrations в ваш проект, если её нет:
+Добавьте конфигурацию Doctrine Migrations в ваш проект:
 ```php
 return [
     'migrations_paths' => [
-        'SayanKanatov\NktMigrations' => 'vendor/sayankanatov/nkt-migrations/migrations',
+        'NktMigrations' => 'vendor/sayankanatov/nkt-migrations/migrations',
     ],
 ];
 ```
