@@ -1,0 +1,21 @@
+{
+    "name": "sayankanatov/nkt-migrations",
+    "description": "Migrations for NKT microservices",
+    "type": "library",
+    "require": {
+        "doctrine/migrations": "^3.8"
+    },
+    "license": "None",
+    "authors": [
+        {
+            "name": "Sayan Kanatov"
+        }
+    ],
+    "minimum-stability": "stable",
+
+    "autoload": {
+        "psr-4": {
+            "NktMigrations\\": "src/"
+        }
+    }
+}
