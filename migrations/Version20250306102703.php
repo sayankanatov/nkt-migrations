@@ -20,7 +20,6 @@ final class Version20250306102703 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE INDEX idx_lst_barcodes_barcode ON lst_barcodes (barcode)');
         $this->addSql('CREATE INDEX idx_lst_signed_goods_good_id ON lst_signed_goods (good_id)');
         $this->addSql('CREATE INDEX idx_lst_attr_values_good_id ON lst_attr_values (good_id)');
         $this->addSql('CREATE INDEX idx_lst_photos_good_id ON lst_photos (good_id)');
