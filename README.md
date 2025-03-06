@@ -10,16 +10,18 @@
 composer require sayankanatov/nkt-migrations
 ```
 
-Добавьте конфигурацию Doctrine Migrations в ваш проект:
-```php
-return [
-    'migrations_paths' => [
-        'NktMigrations' => 'vendor/sayankanatov/nkt-migrations/migrations',
-    ],
-];
+Добавьте конфигурацию Doctrine Migrations в ```config/packages/doctrine_migrations.php``` запись ```'NktMigrations': '%kernel.project_dir%/vendor/sayankanatov/nkt-migrations/migrations'```
+
+Пример:
+```yaml
+doctrine_migrations:
+    migrations_paths:
+        # add this row
+        'NktMigrations': '%kernel.project_dir%/vendor/sayankanatov/nkt-migrations/migrations'
 ```
 
 Чтобы выполнить все доступные миграции, используйте:
 ```sh
-vendor/bin/doctrine-migrations migrate
+php bin/console doctrine:migrations:migrate
 ```
+
