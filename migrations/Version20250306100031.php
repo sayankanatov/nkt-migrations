@@ -22,7 +22,7 @@ final class Version20250306100031 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE lst_signed_goods (
             id SERIAL PRIMARY KEY,
-            good_id INT UNSIGNED NOT NULL,
+            good_id BIGINT UNSIGNED NOT NULL,
             xml_path VARCHAR(255) NOT NULL,
             account_id INT NOT NULL,
             user_id INT NOT NULL,

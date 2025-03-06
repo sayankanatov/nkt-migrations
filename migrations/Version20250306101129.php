@@ -22,7 +22,7 @@ final class Version20250306101129 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE sys_edo_pharma_push_logs (
             id SERIAL PRIMARY KEY,
-            good_id INT NOT NULL,
+            good_id BIGINT UNSIGNED NOT NULL,
             barcode VARCHAR(255) NOT NULL,
             status ENUM('error','success') NOT NULL,
             response TEXT,
