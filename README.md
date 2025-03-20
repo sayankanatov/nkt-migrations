@@ -25,3 +25,12 @@ doctrine_migrations:
 php bin/console doctrine:migrations:migrate
 ```
 
+Зависимости:
+```json
+"require": {
+    "doctrine/migrations": "^3.8",
+    "doctrine/doctrine-migrations-bundle": "^3.4",
+    "doctrine/orm": "^3.3.2"
+}
+```
+
