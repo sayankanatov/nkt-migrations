@@ -19,20 +19,29 @@ final class Version20250306093128 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE lst_barcodes (
             id SERIAL PRIMARY KEY,
             barcode VARCHAR(255) NOT NULL,
-            is_deleted TINYINT(1) NOT NULL DEFAULT 0,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
-            DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;');
+            is_deleted BOOLEAN NOT NULL DEFAULT FALSE,
+            created_at TIMESTAMPTZ DEFAULT NOW(),
+            updated_at TIMESTAMPTZ DEFAULT NOW()
+        )');
 
+        $this->addSql('CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+            RETURNS TRIGGER AS $$
+            BEGIN
+                NEW.updated_at = NOW();
+                RETURN NEW;
+            END;
+            $$ LANGUAGE plpgsql;');
+
+        $this->addSql('CREATE TRIGGER set_timestamp BEFORE UPDATE ON lst_barcodes FOR EACH ROW EXECUTE FUNCTION trigger_set_timestamp();');
     }
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('DROP TRIGGER IF EXISTS set_timestamp ON lst_barcodes');
+        $this->addSql('DROP FUNCTION IF EXISTS trigger_set_timestamp');
         $this->addSql('DROP TABLE lst_barcodes');
     }
 }

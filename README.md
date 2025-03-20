@@ -28,11 +28,7 @@ php bin/console doctrine:migrations:migrate
 Зависимости:
 ```json
 "require": {
-    "doctrine/migrations": "^3.8",
-    "doctrine/doctrine-migrations-bundle": "^3.4",
-    "doctrine/orm": "^3.3.2",
-    "symfony/console": "^6.0",
-    "symfony/filesystem": "^7.1"
+    "doctrine/migrations": "^3.8"
 }
 ```
 

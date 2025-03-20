@@ -19,19 +19,29 @@ final class Version20250306100537 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql("CREATE TABLE sys_publication_logs (
             id SERIAL PRIMARY KEY,
-            good_id BIGINT UNSIGNED NOT NULL,
+            good_id BIGINT NOT NULL,
             response TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;");
+            created_at TIMESTAMPTZ DEFAULT NOW(),
+            updated_at TIMESTAMPTZ DEFAULT NOW()
+        )");
+
+        $this->addSql('CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+            RETURNS TRIGGER AS $$
+            BEGIN
+                NEW.updated_at = NOW();
+                RETURN NEW;
+            END;
+            $$ LANGUAGE plpgsql;');
+
+        $this->addSql('CREATE TRIGGER set_timestamp BEFORE UPDATE ON sys_publication_logs FOR EACH ROW EXECUTE FUNCTION trigger_set_timestamp();');
     }
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('DROP TRIGGER IF EXISTS set_timestamp ON sys_publication_logs');
+        $this->addSql('DROP FUNCTION IF EXISTS trigger_set_timestamp');
         $this->addSql('DROP TABLE sys_publication_logs');
     }
 }
