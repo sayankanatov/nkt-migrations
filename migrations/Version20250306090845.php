@@ -23,7 +23,7 @@ final class Version20250306090845 extends AbstractMigration
             id BIGSERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             barcode_id INT NOT NULL,
-            status VARCHAR(20) NOT NULL CHECK (status IN ('published', 'draft', 'archived', 'on-moderation', 'in-queue', 'not-signed')),
+            status VARCHAR(20) NOT NULL CHECK (status IN ('published', 'draft', 'archived', 'on-moderation', 'in-queue', 'not-signed', 'with-errors')),
             account_id INT NOT NULL,
             user_id INT NOT NULL,
             packing_purpose VARCHAR(20) NOT NULL CHECK (packing_purpose IN ('consumer', 'group', 'transport')),
