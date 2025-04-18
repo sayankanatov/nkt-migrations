@@ -19,9 +19,7 @@ final class Version20250314093046 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql('ALTER TABLE lst_signed_goods ADD CONSTRAINT FK_signed_goods_good FOREIGN KEY (good_id) REFERENCES lst_goods (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE lst_attr_values ADD CONSTRAINT FK_attr_values_good FOREIGN KEY (good_id) REFERENCES lst_goods (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE sys_publication_logs ADD CONSTRAINT FK_publication_logs_good FOREIGN KEY (good_id) REFERENCES lst_goods (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE lst_photos ADD CONSTRAINT FK_photos_good FOREIGN KEY (good_id) REFERENCES lst_goods (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE lst_good_categories ADD CONSTRAINT FK_good_categories_good FOREIGN KEY (good_id) REFERENCES lst_goods (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE sys_edo_pharma_push_logs ADD CONSTRAINT FK_pharma_push_logs_good FOREIGN KEY (good_id) REFERENCES lst_goods (id) ON DELETE CASCADE');
