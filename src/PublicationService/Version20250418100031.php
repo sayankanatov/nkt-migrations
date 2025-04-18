@@ -24,7 +24,7 @@ final class Version20250418100031 extends AbstractMigration
             good_id BIGINT NOT NULL,
             xml_path VARCHAR(255) NOT NULL,
             account_id INT NOT NULL,
-            user_id INT NOT NULL,
+            user_id INT,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW()
         )');
