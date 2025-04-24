@@ -10,25 +10,19 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250306100536 extends AbstractMigration
+final class Version20250424093128 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Создание таблицы lst_attr_values';
+        return 'Создание таблицы lst_barcodes';
     }
 
     public function up(Schema $schema): void
     {
-        $this->addSql("CREATE TABLE lst_attr_values (
+        $this->addSql("CREATE TABLE lst_barcodes (
             id SERIAL PRIMARY KEY,
-            attr_id INT NOT NULL,
-            value TEXT NOT NULL,
-            type VARCHAR(255) NOT NULL,
-            status VARCHAR(10) CHECK (status IN ('draft', 'published', 'canceled')) NOT NULL,
-            good_id BIGINT NOT NULL,
-            data_qualifier TEXT,
-            source VARCHAR(10) DEFAULT 'nkt' CHECK (source IN ('ekls', 'gs1', 'nkt')),
-            is_visible BOOLEAN NOT NULL DEFAULT TRUE,
+            barcode VARCHAR(255) NOT NULL,
+            status VARCHAR(20) NOT NULL CHECK (status IN ('published', 'draft', 'archived', 'deleted')) DEFAULT 'draft',
             is_deleted BOOLEAN NOT NULL DEFAULT FALSE,
             created_at TIMESTAMPTZ DEFAULT NOW(),
             updated_at TIMESTAMPTZ DEFAULT NOW()
@@ -42,13 +36,13 @@ final class Version20250306100536 extends AbstractMigration
             END;
             $$ LANGUAGE plpgsql;');
 
-        $this->addSql('CREATE TRIGGER set_timestamp BEFORE UPDATE ON lst_attr_values FOR EACH ROW EXECUTE FUNCTION trigger_set_timestamp();');
+        $this->addSql('CREATE TRIGGER set_timestamp BEFORE UPDATE ON lst_barcodes FOR EACH ROW EXECUTE FUNCTION trigger_set_timestamp();');
     }
 
     public function down(Schema $schema): void
     {
-        $this->addSql('DROP TRIGGER IF EXISTS set_timestamp ON lst_attr_values');
+        $this->addSql('DROP TRIGGER IF EXISTS set_timestamp ON lst_barcodes');
         $this->addSql('DROP FUNCTION IF EXISTS trigger_set_timestamp');
-        $this->addSql('DROP TABLE lst_attr_values');
+        $this->addSql('DROP TABLE lst_barcodes');
     }
 }
