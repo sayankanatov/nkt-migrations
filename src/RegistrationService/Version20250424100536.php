@@ -23,7 +23,7 @@ final class Version20250424100536 extends AbstractMigration
             id SERIAL PRIMARY KEY,
             attr_id INT NOT NULL,
             value TEXT NOT NULL,
-            type VARCHAR(255) NOT NULL,
+            type VARCHAR(255) DEFAULT NULL,
             status VARCHAR(10) CHECK (status IN ('draft', 'published', 'canceled')) NOT NULL,
             good_id BIGINT NOT NULL,
             data_qualifier TEXT,
