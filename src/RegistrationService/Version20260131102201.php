@@ -19,7 +19,7 @@ final class Version20260131102201 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql('ALTER TABLE sys_registration_logs ALTER COLUMN good_id TYPE BIGINT DEFAULT NULL');
+        $this->addSql('ALTER TABLE sys_registration_logs ALTER COLUMN good_id TYPE BIGINT');
     }
 
     public function down(Schema $schema): void
