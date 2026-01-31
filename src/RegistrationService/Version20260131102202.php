@@ -20,11 +20,11 @@ final class Version20260131102202 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql('DROP INDEX idx_lst_barcodes_barcode');
-        $this->addSql('CREATE UNIQUE INDEX idx_lst_barcodes_barcode_unique ON lst_barcodes (barcode);');
+        $this->addSql('CREATE UNIQUE INDEX idx_lst_barcodes_barcode_unique ON lst_barcodes (barcode)');
     }
 
     public function down(Schema $schema): void
     {
-        $this->addSql('DROP INDEX idx_lst_barcodes_barcode_unique;');
+        $this->addSql('DROP INDEX idx_lst_barcodes_barcode_unique');
     }
 }
